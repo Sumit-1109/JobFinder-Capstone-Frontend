@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+#root{
+    .poppins-light {
+        font-family: "Poppins", serif;
+        font-weight: 300;
+        font-style: normal;
+      }
+      
+      .poppins-regular {
+        font-family: "Poppins", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      
+      .poppins-medium {
+        font-family: "Poppins", serif;
+        font-weight: 500;
+        font-style: normal;
+      }
+      
+      .poppins-semibold {
+        font-family: "Poppins", serif;
+        font-weight: 600;
+        font-style: normal;
+      }
+      
+      .poppins-bold {
+        font-family: "Poppins", serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+      
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}

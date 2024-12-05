@@ -1,0 +1,76 @@
+.loginPage{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: rgb(255,239,239);
+}
+
+.loginArea{
+    width: 100%;
+    height: 100%;
+    flex: 1.15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2%;
+}
+
+.heading{
+    width: 80%;
+    margin-top: -10%;
+}
+
+.heading h1{
+    font-size: calc(1.5vw + 0.5rem);
+}
+
+.heading p{
+   color: rgba(82, 82, 82, 1) ; 
+   font-size: calc(0.75vw + 0.25rem)
+}
+
+
+.inputArea{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-block: 2%;
+}
+
+.inputArea input{
+    padding: 3%;
+    margin-block: 1.5%;
+}
+
+.buttonBox{
+    width: 80%;
+    height: 7%;
+}
+
+.buttonBox button{
+    background-color: rgba(237, 83, 83, 1);
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    height: 100%;
+    width: 20%;
+}
+
+.toSignUp{
+    width: 80%;
+    display: flex;
+
+    gap: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
