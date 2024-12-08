@@ -1,19 +1,43 @@
 import styles from './login.module.css';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import Image from './Image';
+import { NavLink, useNavigate } from 'react-router-dom';
+import Image from '../Image/Image';
+import axios from 'axios';
 
 function Login() {
+
+    if (localStorage.getItem('token')){
+        navigate('/home');
+    }
 
     const [loginDetails, setLoginDetails] = useState({
         email: '',
         password: ''
     });
 
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try{
+            const res = await axios.post('https://jobfinder-capstone-backend.onrender.com/api/user/login', loginDetails );
+            if (res.status === 200) {
+                setLoginDetails({
+                    email: '',
+                    password: ''
+                });
+                localStorage.setItem('token', res.token);
+                navigate('/');
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
   return (
     <div className={styles.loginPage}>
-        <div className={styles.loginArea}>
+        <form className={styles.loginArea} onSubmit={handleSubmit} >
         <div className={styles.heading}>
             <h1 className='poppins-bold'>
             Already have an account?
@@ -37,7 +61,7 @@ function Login() {
             </p>
             <NavLink to='/register'>Sign Up</NavLink>
         </div>
-        </div>
+        </form>
 
         <Image/>
     </div>

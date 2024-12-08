@@ -1,7 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './Components/Login/Login';
-import UserRegister from './Components/Login/UserRegister';
+
 import './App.css';
+
+import Main from './Pages/Home/Main';
+import Login from  './Pages/User/Login/Login';
+import UserRegister from './Pages/User/Register/UserRegister';
+
+
 
 function App() {
 
@@ -9,6 +14,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
+          <Route path='/' element={<Main/>} />
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<UserRegister/>} />
         </Routes>

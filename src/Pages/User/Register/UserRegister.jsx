@@ -1,8 +1,8 @@
-import styles from './login.module.css';
+import styles from './register.module.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import Image from './Image';
+import Image from '../Image/Image';
 import axios from 'axios';
 
 function UserRegister() {
@@ -28,7 +28,7 @@ function UserRegister() {
             mobile: '',
             password: ''
           })
-          navigate('/');
+          navigate('/login');
         } else{
           console.log("Error")
         }
@@ -38,8 +38,8 @@ function UserRegister() {
     }
 
   return (
-    <div className={styles.loginPage}>
-        <form className={styles.loginArea} onSubmit={handleSubmit}>
+    <div className={styles.registerPage}>
+        <form className={styles.registerArea} onSubmit={handleSubmit}>
         <div className={styles.heading}>
             <h1 className='poppins-bold'>
             Create an account

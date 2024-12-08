@@ -1,5 +1,5 @@
 import styles from './image.module.css';
-import LoginPageImage from '../assets/userLoginLogout.png'
+import LoginPageImage from '../../../assets/userLoginLogout.png'
 
 function Image() {
   return (
