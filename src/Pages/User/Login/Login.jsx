@@ -2,11 +2,13 @@ import styles from './login.module.css';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Image from '../Image/Image';
-import axios from 'axios';
+import { login } from '../../../services';
 
 function Login() {
+    const navigate = useNavigate();
 
     if (localStorage.getItem('token')){
+        alert("Already Logged in");
         navigate('/home');
     }
 
@@ -15,20 +17,20 @@ function Login() {
         password: ''
     });
 
-    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try{
-            const res = await axios.post('https://jobfinder-capstone-backend.onrender.com/api/user/login', loginDetails );
+            const res = await login(loginDetails)
             if (res.status === 200) {
                 setLoginDetails({
                     email: '',
                     password: ''
                 });
-                localStorage.setItem('token', res.token);
-                navigate('/');
+                const token = await res.json;
+                localStorage.setItem('token', token.token);
+                navigate('/home');
             }
         } catch (err) {
             console.log(err);

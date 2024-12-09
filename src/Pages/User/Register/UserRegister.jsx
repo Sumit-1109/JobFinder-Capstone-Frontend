@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import Image from '../Image/Image';
-import axios from 'axios';
+import { register } from '../../../services';
 
 function UserRegister() {
 
@@ -20,7 +20,7 @@ function UserRegister() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try{
-        const res = await axios.post('https://jobfinder-capstone-backend.onrender.com/api/user/register', registerDetails);
+        const res = await register(registerDetails);
         if (res.status === 200) {
           setRegisterDetails({
             name: '',
