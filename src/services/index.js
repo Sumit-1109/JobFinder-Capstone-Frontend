@@ -1,5 +1,5 @@
-// const URL = 'https://jobfinder-capstone-backend.onrender.com';
-const URL = 'http://localhost:8000'
+const URL = 'https://jobfinder-capstone-backend.onrender.com';
+// const URL = 'http://localhost:8000'
 
 export const register = (data) => {
     return fetch(`${URL}/api/user/register`, {
