@@ -1,0 +1,57 @@
+.jobContainer{
+    margin-inline: auto;
+    margin-bottom: 2%;
+    display: flex;
+    height: 35%;
+    width: 80%;
+    box-shadow: 0px 0px 22px 2px rgba(255, 32, 32, 0.25);
+    align-items: center;
+    font-weight: 500;
+}
+
+.jobInfo{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+.leftInfo{
+    width: 45%;
+}
+
+.jobPosition{
+    font-size: calc(0.75vw + 0.5rem);
+}
+
+.aSL{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    font-size: calc(0.5vw + 0.5rem);
+}
+
+.salaryLocation{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: rgba(156, 156, 156, 1);
+}
+
+.jobType{
+    display: flex;
+    gap: 10%;
+    color: rgba(237, 83, 83, 1);
+    font-size: calc(0.5vw + 0.5rem);
+}
+
+
+.companyLogo{
+    width: 6%;
+    aspect-ratio: 1;
+    margin-inline: 2% 1%;
+}
+
+.companyLogo img{
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+

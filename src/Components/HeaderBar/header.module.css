@@ -1,7 +1,7 @@
 .headerBar{
     position: relative;
     width: 100%;
-    height: 20%;
+    height: 25%;
     background-image: url("../../assets/headerBackground.png");
     background-size: 100% 100%;
     display: flex;

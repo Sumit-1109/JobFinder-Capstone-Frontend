@@ -1,0 +1,67 @@
+.SearchAndFilter{
+    margin-inline: auto;
+    box-shadow: 0px 0px 22px 4px rgba(255, 32, 32, 0.25);
+    width: 80%;
+    height: 40%;
+    margin-block: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.searchBarContainer{
+    display: flex;
+    margin-block: 2% 1%;
+    padding: 1% 2% 1% 2%;
+    width: 85%;
+    gap: 3%;
+    border: 1.8px solid rgba(227, 227, 227, 1);
+}
+
+.searchBarContainer input {
+    flex: 1;
+    border: none;
+}
+.searchBarContainer img{
+    object-fit: contain;
+    width: 2%;
+    aspect-ratio: 1;
+}
+
+.FilterAndButtons{
+    border: 2px solid purple;
+    width: 85%;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Filters{
+    background-color: aqua;
+    width: 100%;
+}
+.allfilters{
+    background-color: aquamarine;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.dropBtnContent {
+    display: none;
+  }
+  
+  .dropBtnContent.active {
+    display: block;
+  }
+
+  .dropBtnContent {
+    position: absolute; /* Ensure it is above other content */
+    z-index: 1000; /* Higher than other elements */
+    background: white; /* Ensure visibility */
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto; /* Enable scrolling for long lists */
+  }
+  

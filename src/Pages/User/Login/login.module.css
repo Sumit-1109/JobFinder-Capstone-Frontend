@@ -13,12 +13,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 2%;
 }
 
 .heading{
     width: 80%;
     margin-top: -10%;
+    padding-bottom: 2%;
 }
 
 .heading h1{
@@ -35,17 +35,18 @@
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin-block: 2%;
+    margin-block: 2% 1%;
 }
 
 .inputArea input{
-    padding: 3%;
+    padding: 2.5%;
     margin-block: 1.5%;
 }
 
 .buttonBox{
     width: 80%;
     height: 7%;
+    margin-bottom: 2%;
 }
 
 .buttonBox button{
@@ -63,6 +64,15 @@
     gap: 1%;
 }
 
+
+.inputErrorContainer{
+    height:60%;
+}
+
+.error{
+    height: 5vh;
+    color: red;
+}
 
 
 

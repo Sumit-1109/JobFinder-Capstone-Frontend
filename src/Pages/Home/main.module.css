@@ -2,4 +2,38 @@
     width: 100vw;
     height: 100vh;
     position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.jobSection{
+    height: 85%;
+    padding-block: 1%;
+    overflow-y: scroll;
+}
+
+.pagination{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1%;
+    gap: 2%;
+}
+
+.limit{
+    width: 5%;
+    height: 5vh;
+    font-size: 1rem;
+    padding: 5px;
+}
+.paginationButtons{
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.paginationButtons button {
+    width: 45%;
 }
