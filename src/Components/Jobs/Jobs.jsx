@@ -6,6 +6,9 @@ import rupee from '../../assets/rupee.png';
 import { useNavigate } from 'react-router-dom';
 
 function Jobs({job}) {
+
+  const token = localStorage.getItem('token');
+
     const {_id,companyName, logoUrl, jobPosition, salary, jobType, remoteOffice, location, skillsRequired} = job;
     const navigate = useNavigate();
   return (
@@ -49,9 +52,12 @@ function Jobs({job}) {
             <div className={styles.viewDetails}>
                 <button onClick={() => (navigate(`/jobDetails/${_id}`))}>View details</button>
             </div>
-            <div className={styles.edit}>
+            {
+              token &&
+              <div className={styles.edit}>
                 <button onClick={() => (navigate(`/editJob/${_id}`))}>Edit Details</button>
             </div>
+            }
         </div>
       </div>
     </div>

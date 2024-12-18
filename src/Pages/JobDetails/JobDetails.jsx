@@ -2,8 +2,11 @@ import styles from './JobDetails.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getJobByID } from '../../services';
+import HeaderBar from '../../Components/HeaderBar/HeaderBar';
 
 function JobDetails() {
+
+  const token = localStorage.getItem('token');
 
     const [jobDetails, setJobDetails] = useState('');
 
@@ -27,10 +30,19 @@ function JobDetails() {
     }, [id]);
 
   return (
+
     <div className={styles.JobDetailsContainer}>
+    <HeaderBar/>
       {jobDetails.companyName}
       {jobDetails.location}
-      <button onClick={() => navigate(`/editJob/${id}`)}>Edit</button>
+      
+
+
+      {
+        token && (
+          <button onClick={() => navigate(`/editJob/${id}`)}>Edit</button>
+        )
+      }
     </div>
   )
 }

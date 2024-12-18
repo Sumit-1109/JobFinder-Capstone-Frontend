@@ -18,7 +18,7 @@ function HeaderBar() {
       <img src={shape2} className={styles.shape2} />
       <img src={shape3} className={styles.shape3} />
       <div className={styles.components}>
-        <div className={styles.logo}>
+        <div className={styles.logo} onClick={() => navigate('/home')}>
           <h1 className="poppins-bold">Jobfinder</h1>
         </div>
         

@@ -6,7 +6,20 @@ import { useEffect, useState } from "react";
 import { getJobPositions, getSkills } from "../../services";
 import { useRef } from "react";
 
-function SearchAndFilter({ search, setSearch, filters, setFilters }) {
+function SearchAndFilter({ search, setSearch, setFilters }) {
+
+  const [finalFilters, setFinalFilters] = useState({
+    jobPosition: "",
+    skills: [],
+    jobType: "",
+    remoteOffice: "",
+  });
+
+  const applyFilters = () => {
+    setFilters(finalFilters);
+  };
+  
+
   const navigate = useNavigate();
 
   const [showSkillsDropDown, setShowSkillsDropDown] = useState(false);
@@ -63,7 +76,7 @@ function SearchAndFilter({ search, setSearch, filters, setFilters }) {
 
   const handleSkillCheckBoxChanges = (e) => {
     const { value, checked } = e.target;
-    setFilters((prevFilters) => {
+    setFinalFilters((prevFilters) => {
       const selectedSkills = checked
         ? [...prevFilters.skills, value]
         : prevFilters.skills.filter((skill) => skill !== value);
@@ -72,7 +85,7 @@ function SearchAndFilter({ search, setSearch, filters, setFilters }) {
   };
 
   const handleJobPositionChange = (e) => {
-    setFilters((prevFilters) => ({
+    setFinalFilters((prevFilters) => ({
       ...prevFilters,
       jobPosition: e.target.value,
     }));
@@ -83,14 +96,14 @@ function SearchAndFilter({ search, setSearch, filters, setFilters }) {
   };
 
   const handleRemoteOfficeFilterChange = (e) => {
-    setFilters((prev) => ({
+    setFinalFilters((prev) => ({
       ...prev,
       remoteOffice: e.target.value,
     }));
   };
 
   const handleJobTypeChange = (e) => {
-    setFilters((prev) => ({
+    setFinalFilters((prev) => ({
       ...prev,
       jobType: e.target.value,
     }));
@@ -112,6 +125,18 @@ function SearchAndFilter({ search, setSearch, filters, setFilters }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleRemoveFilter = (key, value = null) => {
+    setFinalFilters((prevFilters) => {
+      if (key === "skills") {
+        return {
+          ...prevFilters,
+          skills: prevFilters.skills.filter((skill) => skill !== value)
+        };
+      }
+      return {...prevFilters, [key]: ""};
+    })
+  }
 
   return (
     <div className={styles.SearchAndFilter}>
@@ -149,7 +174,7 @@ function SearchAndFilter({ search, setSearch, filters, setFilters }) {
                         type="checkbox"
                         id={`skill-${index}`}
                         value={skill}
-                        checked={filters.skills.includes(skill)}
+                        checked={finalFilters.skills.includes(skill)}
                         onChange={handleSkillCheckBoxChanges}
                       />
                       <label htmlFor={`skill-${index}`}>{skill}</label>
@@ -164,7 +189,7 @@ function SearchAndFilter({ search, setSearch, filters, setFilters }) {
                 name="jobPosition"
                 id="JobPosition"
                 onChange={handleJobPositionChange}
-                className={styles.positionDropDown}
+                className={styles.dropDown}
               >
                 <option value="">Job Position</option>
                 {options.jobPositionsOptions.map((position, index) => (
@@ -179,8 +204,9 @@ function SearchAndFilter({ search, setSearch, filters, setFilters }) {
               <select
                 name="jobType"
                 id="jobType"
-                value={filters.jobType}
+                value={finalFilters.jobType}
                 onChange={handleJobTypeChange}
+                className={styles.dropDown}
               >
                 <option value="">Job Type</option>
                 <option value="full-time">Full Time</option>
@@ -195,11 +221,11 @@ function SearchAndFilter({ search, setSearch, filters, setFilters }) {
               <select
                 name="remote/office"
                 id="remote/office"
-                value={filters.remoteOffice}
+                value={finalFilters.remoteOffice}
                 onChange={handleRemoteOfficeFilterChange}
-                className={styles.remoteOfficeDropDown}
+                className={styles.dropDown}
               >
-                <option value="" disabled={filters.remoteOffice === ""}>
+                <option value="" disabled={finalFilters.remoteOffice === ""}>
                   Remote/Office
                 </option>
                 <option value="Remote">Remote</option>
@@ -207,10 +233,31 @@ function SearchAndFilter({ search, setSearch, filters, setFilters }) {
               </select>
             </div>
           </div>
+          <div className={styles.selectedFilters}>
+            {Object.entries(finalFilters).map(([key,value]) => {
+              if (!value || (Array.isArray(value) && value.length === 0)) return null;
+
+              if (key === 'skills') {
+                return value.map((skill, index) => (
+                  <div key={index} className={styles.filterValue}>
+                    <span>{skill}</span>
+                    <button onClick={() => handleRemoveFilter(key, skill)}>x</button>
+                  </div>
+                ));
+              }
+
+              return (
+                <div key={key} className={styles.filterValue}>
+                  <span>{value}</span>
+                  <button onClick={() => handleRemoveFilter(key)}>x</button>
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div className={styles.Buttons}>
-          {Object.keys(filters).length > 0 ? (
-            <button>Apply Filter</button>
+          {Object.keys(finalFilters).length > 0 ? (
+            <button onClick={applyFilters}>Apply Filter</button>
           ) : (
             <button onClick={() => navigate("/newJob")}>Add Job</button>
           )}

@@ -55,3 +55,44 @@
     object-fit: contain;
 }
 
+
+.rightInfo{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-right: 2%;
+    gap: 10%;
+}
+.skills{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 5%;
+    flex-wrap: wrap;
+}
+
+.skillNames{
+    padding: 1% 2%;
+    background-color: rgba(255, 238, 238, 1);
+}
+
+.viewDetails{
+    width: 20%;
+}
+
+.viewDetails button{
+    border: none;
+    width: 100%;
+    padding: 7%;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(237, 83, 83, 1);
+}
+
+.edit button{
+    border: none;
+    width: 100%;
+    padding: 7%;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(237, 83, 83, 1);
+}

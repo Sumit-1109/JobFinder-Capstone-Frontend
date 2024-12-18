@@ -2,7 +2,7 @@
     margin-inline: auto;
     box-shadow: 0px 0px 22px 4px rgba(255, 32, 32, 0.25);
     width: 80%;
-    height: 40%;
+    height: 50%;
     margin-block: 2%;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,6 @@
 }
 
 .FilterAndButtons{
-    border: 2px solid purple;
     width: 85%;
     flex: 1;
     display: flex;
@@ -36,17 +35,31 @@
 }
 
 .Filters{
-    background-color: aqua;
     width: 100%;
 }
 .allfilters{
-    background-color: aquamarine;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
+.skillsFilter{
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    margin-inline: 2%;
+}
+
+
+.skillDropBtn{
+    width: 80%;
+    padding: 3% 5%;
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(206, 206, 206, 1);
+    border-radius: 7px;
+    color: rgba(156, 156, 156, 1);
+}
 
 .dropBtnContent {
     display: none;
@@ -57,11 +70,75 @@
   }
 
   .dropBtnContent {
-    position: absolute; /* Ensure it is above other content */
-    z-index: 1000; /* Higher than other elements */
-    background: white; /* Ensure visibility */
+    position: absolute; 
+    z-index: 1000;
+    background: white;
     border: 1px solid #ccc;
     max-height: 200px;
-    overflow-y: auto; /* Enable scrolling for long lists */
+    overflow-y: auto; 
+  }
+
+  .jobPositionFilter, .jobType, .remoteOffice {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    margin-inline: 2%;
+  }
+
+  .jobPositionFilter .dropDown{
+    width: 100%;
+  }
+  .remoteOffice{
+    width: 17%;
+  }
+  .remoteOffice .dropDown{
+    width: 100%;
   }
   
+  .dropDown{
+    width: 80%;
+    padding: 3% 5%;
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(206, 206, 206, 1);
+    border-radius: 7px;
+    color: rgba(156, 156, 156, 1);
+  }
+
+  .selectedFilters{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .filterValue{
+    background-color: rgba(255, 238, 238, 1);
+    margin: 1%;
+    width: auto;
+    height: 4vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1%;
+  }
+
+  .filterValue button{
+    margin-left: 0.75vw;
+    background-color: rgba(255, 107, 107, 1);
+    color:  rgba(255, 255, 255, 1);
+    border: none;
+    height: 100%;
+    width: 2vw;
+    cursor: pointer;
+  }
+
+  .Buttons{
+    width: 8vw;
+  }
+
+
+  .Buttons button{
+    border: none;
+    width: 100%;
+    padding: 7%;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(237, 83, 83, 1);
+}
