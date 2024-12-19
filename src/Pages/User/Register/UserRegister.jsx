@@ -8,11 +8,15 @@ import { register } from "../../../services";
 function UserRegister() {
   const navigate = useNavigate();
 
+  const [warning, setWarning] = useState(false);
+  const [warningMessage, setWarningMessage] = useState('');
+
   const [registerDetails, setRegisterDetails] = useState({
     name: "",
     email: "",
     mobile: "",
     password: "",
+    continueToggle: false,
   });
 
   const [error, setError] = useState("");
@@ -27,8 +31,12 @@ function UserRegister() {
           email: "",
           mobile: "",
           password: "",
+          continueToggle: false,
         });
         navigate("/login");
+      } if (res.status === 208) {
+        setWarningMessage("Mobile already exists");
+        setWarning(true);
       } else {
         const errorMessage = await res.json();
         setError(errorMessage.message);
@@ -99,7 +107,25 @@ function UserRegister() {
           />
 
           <div className={styles.backupError}>
-            <p className={styles.error}>{error}</p>
+            {warning ? (
+              <p className={styles.warning}>
+                {warningMessage} <button onClick={() => {
+                  setRegisterDetails(prev => ({
+                    ...prev,
+                    continueToggle: true
+                  }));
+                  setWarning(false)
+                  }}>Yes</button> 
+                  <button onClick={() => {
+                    setRegisterDetails(prev => ({...prev, mobile: '', continueToggle: false}));
+                    setWarning(false);
+                    }}>No</button>
+            </p>
+            ) : (
+              <p className={styles.error}>
+            {error}
+            </p>
+            )}
           </div>
         </div>
 
@@ -109,6 +135,10 @@ function UserRegister() {
         <div className={styles.toSignUp}>
           <p>Already have an account</p>
           <NavLink to="/login">Sign In</NavLink>
+        </div>
+        <div className={styles.toHome}>
+          <p>Continue without signing in?</p>
+          <NavLink to="/home">Home</NavLink>
         </div>
       </form>
 

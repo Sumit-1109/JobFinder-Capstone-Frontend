@@ -76,7 +76,7 @@ function Main() {
     
       <HeaderBar />
 
-      <SearchAndFilter setSearch={setSearch} search={search} setFilters={setFilters}  />
+      <SearchAndFilter setSearch={setSearch} search={search} filters={filters} setFilters={setFilters}  />
       
       <div className={styles.jobSection}>
       {

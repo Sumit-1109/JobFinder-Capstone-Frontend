@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { getJobPositions, getSkills } from "../../services";
 import { useRef } from "react";
 
-function SearchAndFilter({ search, setSearch, setFilters }) {
+function SearchAndFilter({ search, setSearch, filters, setFilters }) {
 
   const [finalFilters, setFinalFilters] = useState({
     jobPosition: "",
@@ -17,6 +17,7 @@ function SearchAndFilter({ search, setSearch, setFilters }) {
 
   const applyFilters = () => {
     setFilters(finalFilters);
+    setLastFilter(false);
   };
   
 
@@ -30,6 +31,8 @@ function SearchAndFilter({ search, setSearch, setFilters }) {
     skillsOptions: [],
     jobPositionsOptions: [],
   });
+
+  const [lastFilter, setLastFilter] = useState(false);
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -128,15 +131,61 @@ function SearchAndFilter({ search, setSearch, setFilters }) {
 
   const handleRemoveFilter = (key, value = null) => {
     setFinalFilters((prevFilters) => {
+      let newFilters;
+
       if (key === "skills") {
-        return {
+        newFilters ={
           ...prevFilters,
           skills: prevFilters.skills.filter((skill) => skill !== value)
         };
+      } else {
+        newFilters= {...prevFilters, [key]: ""};
       }
-      return {...prevFilters, [key]: ""};
+
+      // setFilters(newFilters);
+      return newFilters;
     })
   }
+
+
+  const isAnyFilterSelected = (finalFilters) => {
+    return Object.values(finalFilters).some(value => {
+      if (Array.isArray(value)){
+        return value.length > 0;
+      }
+      return value !== '';
+    })
+  }
+
+  const clearFilters = () => {
+    setFilters({
+      jobPosition: "",
+      skills: [],
+      jobType: "",
+      remoteOffice: "",
+    });
+    setFinalFilters({
+      jobPosition: "",
+      skills: [],
+      jobType: "",
+      remoteOffice: "",
+    })
+  }
+
+  const isLastFilter = (filters) => {
+    const selectedFiltersCount = Object.values(filters).reduce((count, value) => {
+      if (Array.isArray(value)){
+        return count + (value.length > 0 ? 1 : 0);
+      } else {
+        return count + (value !== '' ? 1 : 0);
+      }
+    }, 0);
+    return selectedFiltersCount === 1;
+  }
+
+  useEffect(() => {
+    isLastFilter(filters) && setLastFilter(true);
+  }, [filters])
 
   return (
     <div className={styles.SearchAndFilter}>
@@ -256,10 +305,16 @@ function SearchAndFilter({ search, setSearch, setFilters }) {
           </div>
         </div>
         <div className={styles.Buttons}>
-          {Object.keys(finalFilters).length > 0 ? (
+          {isAnyFilterSelected(finalFilters) || lastFilter ? (
+            <div className={styles.ifFiltersSelected}>
             <button onClick={applyFilters}>Apply Filter</button>
-          ) : (
+            <button onClick={clearFilters}>Clear Filters</button>
             <button onClick={() => navigate("/newJob")}>Add Job</button>
+            </div>
+          ) : (
+            <div className={styles.ifNoFilters}>
+            <button onClick={() => navigate("/newJob")}>Add Job</button>
+            </div>
           )}
         </div>
       </div>

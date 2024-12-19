@@ -13,7 +13,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 2%;
+    gap: 1.5%;
+    margin-top: 2.5%;
 }
 
 .heading{
@@ -63,12 +64,20 @@
     gap: 1%;
 }
 
-
-.error{
+.backupError{
     height: 5vh;
+    display: flex;
+    align-items: center;
+}
+.error{
     color: red;
 }
 
+.toHome{
+    width: 80%;
+    display: flex;
+    gap: 1%;
+}
 
 
 

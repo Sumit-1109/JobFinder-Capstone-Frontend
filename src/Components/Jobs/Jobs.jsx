@@ -49,6 +49,7 @@ function Jobs({job}) {
                     </div>
                 )) }
             </div>
+            <div className={styles.viewEdit}>
             <div className={styles.viewDetails}>
                 <button onClick={() => (navigate(`/jobDetails/${_id}`))}>View details</button>
             </div>
@@ -58,6 +59,7 @@ function Jobs({job}) {
                 <button onClick={() => (navigate(`/editJob/${_id}`))}>Edit Details</button>
             </div>
             }
+            </div>
         </div>
       </div>
     </div>

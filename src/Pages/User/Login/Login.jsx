@@ -95,6 +95,11 @@ function Login() {
           <p>Don’t have an account?</p>
           <NavLink to="/register">Sign Up</NavLink>
         </div>
+
+        <div className={styles.toHome}>
+          <p>Continue without logging in?</p>
+          <NavLink to="/home">Home</NavLink>
+        </div>
       </form>
 
       <Image />

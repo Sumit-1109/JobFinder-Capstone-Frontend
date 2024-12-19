@@ -78,7 +78,11 @@
 }
 
 .viewDetails{
-    width: 20%;
+    width: 45%;
+}
+
+.edit{
+    width: 45%;
 }
 
 .viewDetails button{
@@ -95,4 +99,10 @@
     padding: 7%;
     color: rgba(255, 255, 255, 1);
     background-color: rgba(237, 83, 83, 1);
+}
+
+.viewEdit{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
 }

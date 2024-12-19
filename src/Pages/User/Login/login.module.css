@@ -64,6 +64,13 @@
     gap: 1%;
 }
 
+.toHome{
+    width: 80%;
+    display: flex;
+    margin-top: 1%;
+    gap: 1%;
+}
+
 
 .inputErrorContainer{
     height:60%;
